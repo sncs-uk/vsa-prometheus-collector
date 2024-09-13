@@ -1,0 +1,8 @@
+certifi==2024.8.30
+charset-normalizer==3.3.2
+idna==3.8
+prometheus_client==0.20.0
+python-dotenv==1.0.1
+requests==2.32.3
+starwind_vsa @ git+https://github.com/rfranks-securenet/python_starwindvsa.git@e6787ed8ad285a6f229845452a7dec2945a6db98
+urllib3==2.2.3
