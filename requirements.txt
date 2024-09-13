@@ -4,5 +4,5 @@ idna==3.8
 prometheus_client==0.20.0
 python-dotenv==1.0.1
 requests==2.32.3
-starwind_vsa @ git+https://github.com/rfranks-securenet/python_starwindvsa.git@e6787ed8ad285a6f229845452a7dec2945a6db98
+starwind_vsa @ git+https://github.com/rfranks-securenet/python_starwindvsa.git@a6abc07a5b4684b15a26c5da8ec61e0ff52d53cd
 urllib3==2.2.3

@@ -14,6 +14,8 @@ from prometheus_client import Gauge, Enum
 from starwind_vsa.vsa_client import VsaClient
 from collectors.base_collector import BaseCollector
 
+logger = logging.getLogger(__name__)
+
 class VolumeCollector(BaseCollector):
     """ Volume collector class """
     def __init__(self):
@@ -44,7 +46,7 @@ class VolumeCollector(BaseCollector):
     def collect(self, cl: VsaClient) -> None:
         """ Actually run the collect in order to retreive data"""
         resp = cl.get("api/v1/volumes")
-        logging.debug("Got response: %s", resp.status_code)
+        logger.debug("Got response: %s", resp.status_code)
 
         if resp is None:
             return

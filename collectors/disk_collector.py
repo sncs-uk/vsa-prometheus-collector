@@ -14,6 +14,8 @@ from prometheus_client import Gauge
 from starwind_vsa.vsa_client import VsaClient
 from collectors.base_collector import BaseCollector
 
+logger = logging.getLogger(__name__)
+
 class DiskCollector(BaseCollector):
     """ Disk collector class """
     def __init__(self):
@@ -26,7 +28,7 @@ class DiskCollector(BaseCollector):
         """ Define the metrics to be exported """
         labels = ['disk_id'] + common_labels
 
-        logging.debug("Setting up DiskCollector")
+        logger.debug("Setting up DiskCollector")
         self._disk_used = Gauge("vsa_disk_used", "Disk used", labels)
         self._disk_hot_spare = Gauge("vsa_disk_hot_spare", "Disk hot spare", labels)
         self._disk_size_bytes = Gauge("vsa_disk_size_bytes", "Disk size", labels)
@@ -34,7 +36,7 @@ class DiskCollector(BaseCollector):
     def collect(self, cl: VsaClient) -> None:
         """ Actually run the collect in order to retreive data"""
         resp = cl.get("api/v1/disks")
-        logging.debug("Got response: %s", resp.status_code)
+        logger.debug("Got response: %s", resp.status_code)
 
         if resp is None:
             return
