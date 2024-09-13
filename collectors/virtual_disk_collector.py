@@ -59,6 +59,9 @@ class VirtualDiskCollector(BaseCollector):
         """ Actually run the collect in order to retreive data"""
         resp = cl.get("api/v1/virtualdisks")
 
+        if resp is None:
+            return
+
 
         for item in resp.json()["rows"]:
             self._availability.labels(

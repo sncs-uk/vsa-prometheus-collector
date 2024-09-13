@@ -32,6 +32,9 @@ class DiskCollector(BaseCollector):
         """ Actually run the collect in order to retreive data"""
         resp = cl.get("api/v1/disks")
 
+        if resp is None:
+            return
+
 
         for item in resp.json()["rows"]:
             self._disk_used.labels(

@@ -42,6 +42,9 @@ class VolumeCollector(BaseCollector):
         """ Actually run the collect in order to retreive data"""
         resp = cl.get("api/v1/volumes")
 
+        if resp is None:
+            return
+
 
         for volume in resp.json()["rows"]:
             self._volume_usable_capacity.labels(

@@ -47,6 +47,9 @@ class PoolCollector(BaseCollector):
         """ Actually run the collect in order to retreive data"""
         resp = cl.get("api/v1/pools")
 
+        if resp is None:
+            return
+
 
         for item in resp.json()["rows"]:
             self._pool_raw_capacity.labels(
