@@ -1,0 +1,4 @@
+.env
+data/lastrun.txt
+data/token.pickle
+.env.example
