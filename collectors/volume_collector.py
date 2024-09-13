@@ -7,6 +7,9 @@ This module implements a volume collector to collect information about storage v
 :copyright: (c) 2024 by Richard Franks.
 :license: Apache2, see LICENSE for more details.
 """
+
+import logging
+
 from prometheus_client import Gauge, Enum
 from starwind_vsa.vsa_client import VsaClient
 from collectors.base_collector import BaseCollector
@@ -41,6 +44,7 @@ class VolumeCollector(BaseCollector):
     def collect(self, cl: VsaClient) -> None:
         """ Actually run the collect in order to retreive data"""
         resp = cl.get("api/v1/volumes")
+        logging.debug("Got response: %s", resp.status_code)
 
         if resp is None:
             return

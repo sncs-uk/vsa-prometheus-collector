@@ -8,6 +8,7 @@ This module runs the prometheus exporter.
 :license: Apache2, see LICENSE for more details.
 """
 import time
+import logging
 
 from starwind_vsa.vsa_client import VsaClient
 from prometheus_client import start_http_server
@@ -50,6 +51,11 @@ def run(url: str, user: str, password: str, ignore_certs: bool = True) -> None:
 if __name__ == "__main__":
     from dotenv import load_dotenv
     import os
+
+    logging.basicConfig(level=logging.DEBUG)
+    logging.getLogger("urllib3").setLevel(logging.ERROR)
+    logging.getLogger("requests_oauthlib").setLevel(logging.ERROR)
+
     load_dotenv()
     run(
         os.getenv("VSA_URL"),

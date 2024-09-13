@@ -8,6 +8,8 @@ This module implements a virtual disk collector to collect information about vir
 :license: Apache2, see LICENSE for more details.
 """
 
+import logging
+
 from prometheus_client import Info, Gauge, Enum
 from starwind_vsa.vsa_client import VsaClient
 from collectors.base_collector import BaseCollector
@@ -58,6 +60,7 @@ class VirtualDiskCollector(BaseCollector):
     def collect(self, cl: VsaClient) -> None:
         """ Actually run the collect in order to retreive data"""
         resp = cl.get("api/v1/virtualdisks")
+        logging.debug("Got response: %s", resp.status_code)
 
         if resp is None:
             return
