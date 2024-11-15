@@ -42,7 +42,8 @@ class PoolCollector(BaseCollector):
                                     "Pool pooling type",
                                     labels,
                                     states=["zfs_stripped_raid_z2",
-                                            "zfs_stripped_mirror"])
+                                            "zfs_stripped_mirror",
+                                            "hardware"])
         self._pool_state = Enum("vsa_pool_state",
                                 "Pool state",
                                 labels,
