@@ -37,13 +37,13 @@ class PoolCollector(BaseCollector):
                                            labels)
         self._pool_free_space = Gauge("vsa_pool_free_space", "Pool free space", labels)
         # pool_disks = Gauge("vsa_disk_hot_spare", "Disk hot spare", labels)
-        self._pool_type = Enum("vsa_pool_type", "Pool type", labels, states=["zfs"])
+        self._pool_type = Enum("vsa_pool_type", "Pool type", labels, states=["zfs", "hardware"])
         self._pool_pool_type = Enum("vsa_pool_pool_type",
                                     "Pool pooling type",
                                     labels,
                                     states=["zfs_stripped_raid_z2",
                                             "zfs_stripped_mirror",
-                                            "hardware"])
+                                            "hw_raid_1"])
         self._pool_state = Enum("vsa_pool_state",
                                 "Pool state",
                                 labels,

@@ -41,7 +41,8 @@ class VirtualDiskCollector(BaseCollector):
                                            labels,
                                            states=["notApplicable",
                                                    "synchronizing",
-                                                   "synchronized"])
+                                                   "synchronized",
+                                                   "notSynchronized"])
         self._synchronized_bytes = Gauge("vsa_virtual_disk_synchronized_bytes",
                                          "Virtual disk synchronized bytes",
                                          labels)
